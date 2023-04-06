@@ -244,14 +244,15 @@ def create_timeseries_dataset(args):
             else:
                 name_map[class_name] = 1
 
-
     for class_name, dataset_count in name_map.items():
-        if dataset_count < 2:
-            print('Dropping class [', class_name, '] found [',dataset_count,'] datasets, but at least 2 are required.')
+
+        if dataset_count % 2:
+            print('Removing one dataset from class [', class_name, '] found [', dataset_count,']classes, sets must be even.')
             drop_index = y.index(class_name)
             raw_dfs.pop(drop_index)
             X_index.pop(drop_index)
             y.pop(drop_index)
+
 
     X_index = pd.DataFrame(X_index, columns=['X_index'])
 
