@@ -53,6 +53,7 @@ if __name__ == '__main__':
 
     parser.add_argument('--output_image_path', type=str, default='smell_dataset_viz.png', help='location of dataset')
 
+
     args = parser.parse_args()
 
     create_viz(args)
