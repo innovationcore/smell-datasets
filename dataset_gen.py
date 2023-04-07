@@ -121,13 +121,7 @@ def create_dataset(args):
         json.dump(class_map, f, ensure_ascii=False, indent=4)
 
 
-def process_timeseries_train_test(args, raw_dfs, train=True):
-
-    sample_sizes = []
-    for df in raw_dfs:
-        sample_sizes.append(len(df))
-
-    min_sample_size = min(sample_sizes)
+def process_timeseries_train_test(args, raw_dfs, min_sample_size, train=True):
 
     new_raw_dfs = []
 
@@ -247,7 +241,7 @@ def create_timeseries_dataset(args):
     for class_name, dataset_count in name_map.items():
 
         if dataset_count % 2:
-            print('Removing one dataset from class [', class_name, '] found [', dataset_count,']classes, sets must be even.')
+            print('Removing one dataset from class [', class_name, '] found [', dataset_count,'] classes, sets must be even.')
             drop_index = y.index(class_name)
             raw_dfs.pop(drop_index)
             X_index.pop(drop_index)
@@ -259,6 +253,13 @@ def create_timeseries_dataset(args):
     train_X, test_X, train_y, test_y = train_test_split(X_index, y, test_size=args.test_size, stratify=y,
                                                         random_state=args.random_state)
 
+    sample_sizes = []
+    for df in raw_dfs:
+        sample_sizes.append(len(df))
+
+    min_sample_size = min(sample_sizes)
+
+
     raw_dfs_train = []
     raw_dfs_test = []
 
@@ -268,8 +269,8 @@ def create_timeseries_dataset(args):
     for index, row in test_X.iterrows():
         raw_dfs_test.append(raw_dfs[index])
 
-    process_timeseries_train_test(args, raw_dfs_train, train=True)
-    process_timeseries_train_test(args, raw_dfs_test, train=False)
+    process_timeseries_train_test(args, raw_dfs_train, min_sample_size, train=True)
+    process_timeseries_train_test(args, raw_dfs_test, min_sample_size, train=False)
 
 if __name__ == '__main__':
 
