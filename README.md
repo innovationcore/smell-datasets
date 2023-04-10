@@ -32,7 +32,6 @@ The dataset visualization code implements t-distributed stochastic neighbor embe
 ```
 python visual_gen.py 
 ```
-
 ![Data_Visualization](smell_dataset_viz.png)
 
 ```
