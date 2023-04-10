@@ -43,3 +43,10 @@ python visual_gen.py
 ## Models 
 Pretrained models can be found in the "models" directory
 
+| Model |      AUC      | ACC | Best Score |
+|:-------:|:---------------------------------:|:------:|:-------:|
+|   Random Forest   |          1           | .99 |   .98   |
+|   Neural Network  |               1              | 1 |   .98   |
+|   Logistic Regression   | 1 |  .99 |   .77   |
+
+
