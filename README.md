@@ -1,6 +1,18 @@
 # smell-datasets
 
+## Introduction
+
+Electronic nose (e-nose) technology is a type of sensory system that mimics the olfactory system of mammals to detect, identify, and quantify odors or volatile organic compounds (VOCs) in the air.
+
+E-noses consist of a combination of chemical sensors, pattern recognition algorithms, and data analysis software that work together to identify and classify different smells. The chemical sensors used in e-noses can detect a wide range of VOCs, including gases such as carbon dioxide, nitrogen oxides, and methane, as well as volatile organic compounds like benzene, formaldehyde, and ethanol.
+
+E-noses can be used in a variety of applications, including food and beverage quality control, environmental monitoring, medical diagnosis, and detection of hazardous chemicals. In the food industry, e-noses are used to ensure product consistency and to detect contaminants or spoilage. In medical applications, e-noses have been used to detect diseases such as lung cancer and diabetes by analyzing the volatile organic compounds in patients' breath. In environmental monitoring, e-noses can detect and identify pollutants in the air, water, and soil.
+
+This repository provides measurement data, data parsers, data visualization, and pretrained models for e-nose applications.
+
 ## Raw Data
+Raw data is obtained from the [smell.Inspector device using smell.Annotator software](https://smart-nanotubes.com/products/#hardware)
+
 Raw measurements from the Smell Annotator are found in the "raw_data" directory.
 
 ## Dataset Parser
