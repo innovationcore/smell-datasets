@@ -1,5 +1,7 @@
 # smell-datasets
 
+Unless otherwise noted, this work is derived from the [Institute for Biomedical Informatics Innovation Core](https://medicine.ai.uky.edu/) at the University of Kentucky.
+
 ## Introduction
 
 Electronic nose (e-nose) technology is a type of sensory system that mimics the olfactory system of mammals to detect, identify, and quantify odors or volatile organic compounds (VOCs) in the air.
@@ -14,6 +16,8 @@ This repository provides measurement data, data parsers, data visualization, and
 Raw data is obtained from the [smell.Inspector device using smell.Annotator software](https://smart-nanotubes.com/products/#hardware)
 
 Raw measurements from the Smell Annotator are found in the "raw_data" directory.
+
+Currently, there are 15 different smells, each with multiple samples.
 
 ## Dataset Parser
 The dataset parser combines the raw files, eliminates unused channels, and prepares a dataset for model training.
