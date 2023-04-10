@@ -41,7 +41,7 @@ python visual_gen.py
 ```
 
 ## Models 
-Pretrained models can be found in the "models" directory
+Pretrained models trained across 15 classes can be found in the "models" directory
 
 | Model |      AUC      | ACC | Best Score |
 |:-------:|:---------------------------------:|:------:|:-------:|
