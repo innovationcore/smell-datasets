@@ -210,6 +210,7 @@ def process_timeseries_train_test(args, raw_dfs, min_sample_size, train=True):
 
     df.to_csv(save_path, index=False)
 
+
     print('Saving timeseries smell dataset metadata to:', args.output_dataset_metadata_path)
     with open(args.output_dataset_metadata_path, 'w', encoding='utf-8') as f:
         json.dump(class_map, f, ensure_ascii=False, indent=4)
