@@ -23,8 +23,9 @@ def create_viz(args):
     #df = df.drop('temperature', axis=1)
 
     #seperate out class from label
-    X = df.drop('class', axis=1)
     y = df['class']
+    X = df.drop('class', axis=1)
+
 
 
     tsne = TSNE(n_components=2, verbose=1, random_state=123, perplexity=30, n_iter=1000)

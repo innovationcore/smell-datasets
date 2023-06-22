@@ -200,6 +200,7 @@ def process_timeseries_train_test(args, raw_dfs, min_sample_size, train=True):
 
     df = df.rename(columns=new_column_map)
     # df = df.rename(columns={'':'timepoints'})
+
     df.index.name = 'index'
 
     first_column = df.pop('mindex')

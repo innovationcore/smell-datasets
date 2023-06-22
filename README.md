@@ -43,3 +43,8 @@ python visual_gen.py
 ## Models 
 Pretrained models can be found in the "models" directory
 
+## Model Training
+[Using ml_classifier_trainer](https://github.com/innovationcore/ml_classifier_trainer)
+```
+python main.py --dataset_path=smell_dataset.csv --multiclass
+```
