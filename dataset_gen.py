@@ -123,6 +123,19 @@ def create_dataset(args):
     with open(args.output_dataset_metadata_path, 'w', encoding='utf-8') as f:
         json.dump(class_map, f, ensure_ascii=False, indent=4)
 
+    class_list = dict()
+
+    demo_df = pd.DataFrame(columns=df.columns)
+
+    # create demo dataset
+    for i, row in df.iterrows():
+        if row['class'] not in class_list:
+            class_list[row['class']] = 0
+        class_list[row['class']] += 1
+        if class_list[row['class']] <= args.demo_max_records:
+            demo_df.loc[len(demo_df)] = row
+
+    demo_df.to_csv(args.output_demo_dataset_path)
 
 
 def process_timeseries_train_test(args, raw_dfs, min_sample_size, train=True):
@@ -214,10 +227,10 @@ def process_timeseries_train_test(args, raw_dfs, min_sample_size, train=True):
 
     df.to_csv(save_path, index=False)
 
-
     print('Saving timeseries smell dataset metadata to:', args.output_timeseries_dataset_metadata_path)
     with open(args.output_timeseries_dataset_metadata_path, 'w', encoding='utf-8') as f:
         json.dump(class_map, f, ensure_ascii=False, indent=4)
+
 
 def create_timeseries_dataset(args):
 
@@ -286,6 +299,8 @@ if __name__ == '__main__':
     parser.add_argument('--project_name', type=str, default='smell_dataset_parser', help='name of project')
     parser.add_argument('--raw_dataset_path', type=str, default='raw_data/fw_3_0_1', help='location of dataset')
     parser.add_argument('--output_dataset_path', type=str, default='smell_dataset.csv', help='location of dataset')
+    parser.add_argument('--output_demo_dataset_path', type=str, default='demo_smell_dataset.csv', help='location of dataset')
+    parser.add_argument('--demo_max_records', type=int, default=15,help='location of dataset')
     parser.add_argument('--output_dataset_metadata_path', type=str, default='smell_dataset_metadata.json', help='location of dataset')
     parser.add_argument('--output_timeseries_train_dataset_path', type=str, default='smell_timeseries_train_dataset.csv', help='location of dataset')
     parser.add_argument('--output_timeseries_test_dataset_path', type=str, default='smell_timeseries_test_dataset.csv',
