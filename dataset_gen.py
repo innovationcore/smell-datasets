@@ -63,10 +63,11 @@ def create_dataset(args):
     print('\tFound', len(raw_file_list), 'raw smell data files')
     for raw_file_path in raw_file_list:
         raw_df, class_name = parse_raw_file(raw_file_path)
+
         if raw_df is not None:
             raw_dfs.append(raw_df)
 
-    raw_dfs_keys = [item for item in range(0, len(raw_dfs))]
+    #raw_dfs_keys = [item for item in range(0, len(raw_dfs))]
 
     channel_map = [999, 999, 69, 69, 69, 41, 41, 41, 40, 40, 40, 33, 33, 33, 999, 999, 999, 999, 999, 999, 999, 61, 61,
                    61, 47, 47,
@@ -280,7 +281,7 @@ if __name__ == '__main__':
 
     # general args
     parser.add_argument('--project_name', type=str, default='smell_dataset_parser', help='name of project')
-    parser.add_argument('--raw_dataset_path', type=str, default='raw_data', help='location of dataset')
+    parser.add_argument('--raw_dataset_path', type=str, default='raw_data/fw_3_0_1', help='location of dataset')
     parser.add_argument('--output_dataset_path', type=str, default='smell_dataset.csv', help='location of dataset')
     parser.add_argument('--output_dataset_metadata_path', type=str, default='smell_dataset_metadata.json', help='location of dataset')
     parser.add_argument('--output_timeseries_train_dataset_path', type=str, default='smell_timeseries_train_dataset.csv', help='location of dataset')
