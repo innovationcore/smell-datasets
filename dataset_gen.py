@@ -101,7 +101,9 @@ def create_dataset(args):
         if class_id not in class_map:
             class_map[class_id] = class_name
 
+
     df = df.drop('class_name', axis=1)
+
 
     print('Cleaning up indexes')
     #clean up indexes
@@ -120,6 +122,7 @@ def create_dataset(args):
     print('Saving smell dataset metadata to:', args.output_dataset_metadata_path)
     with open(args.output_dataset_metadata_path, 'w', encoding='utf-8') as f:
         json.dump(class_map, f, ensure_ascii=False, indent=4)
+
 
 
 def process_timeseries_train_test(args, raw_dfs, min_sample_size, train=True):
@@ -212,8 +215,8 @@ def process_timeseries_train_test(args, raw_dfs, min_sample_size, train=True):
     df.to_csv(save_path, index=False)
 
 
-    print('Saving timeseries smell dataset metadata to:', args.output_dataset_metadata_path)
-    with open(args.output_dataset_metadata_path, 'w', encoding='utf-8') as f:
+    print('Saving timeseries smell dataset metadata to:', args.output_timeseries_dataset_metadata_path)
+    with open(args.output_timeseries_dataset_metadata_path, 'w', encoding='utf-8') as f:
         json.dump(class_map, f, ensure_ascii=False, indent=4)
 
 def create_timeseries_dataset(args):
