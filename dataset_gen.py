@@ -126,6 +126,7 @@ def create_dataset(args):
     class_list = dict()
 
     demo_df = pd.DataFrame(columns=df.columns)
+    demo_df.index.name = 'index'
 
     # create demo dataset
     for i, row in df.iterrows():
