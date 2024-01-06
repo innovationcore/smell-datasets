@@ -68,12 +68,12 @@ def create_dataset(args):
             raw_dfs.append(raw_df)
 
     #raw_dfs_keys = [item for item in range(0, len(raw_dfs))]
-
-    channel_map = [999, 999, 69, 69, 69, 41, 41, 41, 40, 40, 40, 33, 33, 33, 999, 999, 999, 999, 999, 999, 999, 61, 61,
+    #Add 0 to begining to include timestamp + add 0 to end to include class
+    channel_map = [999, 999, 999, 69, 69, 69, 41, 41, 41, 40, 40, 40, 33, 33, 33, 999, 999, 999, 999, 999, 999, 999, 61, 61,
                    61, 47, 47,
                    47, 43, 43, 43, 999, 999, 999, 999, 90, 90, 90, 67, 67, 67, 53, 53, 53, 42, 42, 42, 999, 999, 999,
                    999, 94, 94, 94,
-                   89, 89, 89, 85, 85, 85, 59, 59, 59, 999, 999, 1, 1]
+                   89, 89, 89, 85, 85, 85, 59, 59, 59, 999, 999, 1, 1, 0]
 
     df = pd.concat(raw_dfs, axis=0)
 
@@ -83,6 +83,7 @@ def create_dataset(args):
     for idx, x in enumerate(channel_map):
         if x == 999:
             colname = df.columns[idx]
+            print(colname)
             drop_list.append(colname)
 
     for colname in drop_list:
